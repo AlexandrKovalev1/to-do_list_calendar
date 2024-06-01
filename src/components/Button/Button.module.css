@@ -1,0 +1,33 @@
+.button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+}
+
+.arrow {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    margin: 3px;
+}
+
+.arrow:hover {
+    border-color: red;
+    transition: 0.4s;
+}
+.next {
+    transform: rotate(45deg);
+}
+
+.prev {
+    transform: rotate(-135deg);
+}
+
