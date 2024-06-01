@@ -1,10 +1,12 @@
 import { FC, useState } from 'react';
 import classes from './Main.module.css';
 import { Calendar } from '../../components/Calendar/Calendar';
+import { CalendarStateType } from '../../reducers/calendarReducer';
 
 type Props = {};
 export const Main: FC<Props> = (props: Props) => {
 	const [selectedDate, selectDate] = useState(new Date());
+
 	return (
 		<main className={classes.main}>
 			<div>

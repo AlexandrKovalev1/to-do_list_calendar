@@ -20,7 +20,7 @@
 }
 
 .arrow:hover {
-    border-color: red;
+    border-color: black;
     transition: 0.4s;
 }
 .next {

@@ -6,10 +6,10 @@
     @media screen and (max-width: 1024px){
         grid-template-columns: 35% 1fr;
     }
+    /*@media screen and (max-width: 768px){*/
+    /*    grid-template-columns: 45% 1fr;*/
+    /*}*/
     @media screen and (max-width: 768px){
-        grid-template-columns: 45% 1fr;
-    }
-    @media screen and (max-width: 425px){
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
