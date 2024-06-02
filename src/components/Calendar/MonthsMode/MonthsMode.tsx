@@ -15,7 +15,7 @@ type Props = {
 	setMode: (value: 'days' | 'months' | 'years') => void;
 	setMonth: (index: number) => void;
 };
-export const MonthsNames: FC<Props> = ({
+export const MonthsMode: FC<Props> = ({
 	monthsNames,
 	selectedYear,
 	selectedMonthIndex,

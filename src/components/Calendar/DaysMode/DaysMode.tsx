@@ -1,35 +1,10 @@
 import classes from '../Calendar.module.css';
 import { FC } from 'react';
-import { checkDateIsEqual, checkIsToday } from '../../../utils/helpers/date';
-
-type DayType = {
-	date: Date;
-	dayNumber: number;
-	day: string;
-	dayShort: string;
-	dayNumberInWeek: number;
-	year: number;
-	yearShort: string;
-	month: string;
-	monthShort: string;
-	monthNumber: number;
-	monthIndex: number;
-	time: number;
-	weekNumber: number;
-	week: number;
-};
-type DaysOfWeekProps = {
-	calendarDays: DayType[];
-	selectedDay: Date;
-	monthIndex: number;
-	setSelectedDay: (day: DayType) => void;
-};
-
-type DaysOfWeekNameProps = {
-	days: { day: string; dayShort: string }[];
-};
-
-type DaysModeProps = DaysOfWeekProps & DaysOfWeekNameProps;
+import {
+	checkDateIsEqual,
+	checkIsToday
+} from '../../../utils/helpers/calendar/date';
+import { DayType } from '../CalendarTypes';
 
 export const DaysMode: FC<DaysModeProps> = ({
 	calendarDays,
@@ -84,7 +59,10 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 					<div
 						key={day.date.toString()}
 						className={finalClass}
-						onClick={() => setSelectedDay(day)}
+						onClick={() => {
+							setSelectedDay(day);
+							console.log(day.time);
+						}}
 					>
 						{day.dayNumber}
 					</div>
@@ -93,3 +71,18 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 		</div>
 	);
 };
+
+//types
+
+type DaysOfWeekProps = {
+	calendarDays: DayType[];
+	selectedDay: Date;
+	monthIndex: number;
+	setSelectedDay: (day: DayType) => void;
+};
+
+type DaysOfWeekNameProps = {
+	days: { day: string; dayShort: string }[];
+};
+
+type DaysModeProps = DaysOfWeekProps & DaysOfWeekNameProps;
