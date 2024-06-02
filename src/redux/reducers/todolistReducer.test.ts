@@ -4,7 +4,7 @@ import {
 	changeStatusTask,
 	editTitleTask,
 	todolistReducer,
-	TodolistType
+	TodolistType, createTodoList
 } from './todolistReducer';
 
 let initialState: TodolistType[];
@@ -14,11 +14,20 @@ describe('todolistReducer', () => {
 		initialState = [
 			{
 				id: '123',
-				title: 'Demo',
 				filter: 'All',
 				tasks: [{ title: 'first', id: '456', isDone: false }]
 			}
 		];
+	});
+
+	test('todoList should be created', () => {
+		const todoId = '1230';
+		const action = createTodoList(todoId);
+		const newState = todolistReducer(initialState, action);
+
+		expect(newState[1].tasks).toBeDefined()
+		expect(newState.length).toBe(2)
+		expect(newState[1].id).toBe(todoId)
 	});
 
 	test('should add a new task', () => {

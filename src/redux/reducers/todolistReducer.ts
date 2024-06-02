@@ -3,10 +3,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState: TodolistType[] = [
 	{
-		id: uuidv4(),
-		title: 'Demo',
+		id: '1717275600000',
 		filter: 'All',
-		tasks: [{ title: 'first', id: uuidv4(), isDone: false }]
+		tasks: [
+			{ title: 'first', id: uuidv4(), isDone: false },
+			{ title: 'second', id: uuidv4(), isDone: false },
+			{ title: 'third', id: uuidv4(), isDone: true }
+		]
+	},
+	{
+		id: '1717362000000',
+		filter: 'All',
+		tasks: []
 	}
 ];
 
@@ -15,6 +23,15 @@ export const todolistReducer = (
 	action: TodolistActionsType
 ) => {
 	switch (action.type) {
+		case 'CREATE-TODOLIST': {
+			const newTodolist: TodolistType = {
+				id: action.todoId,
+				filter: 'All',
+				tasks: []
+			};
+
+			return [...state, newTodolist];
+		}
 		case 'ADD-TASK': {
 			const task: TaskType = {
 				id: uuidv4(),
@@ -32,9 +49,9 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-							...todo,
-							tasks: todo.tasks.filter(task => task.id !== action.idTask)
-						}
+						...todo,
+						tasks: todo.tasks.filter(task => task.id !== action.idTask)
+					}
 					: todo
 			);
 		}
@@ -42,13 +59,13 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-							...todo,
-							tasks: todo.tasks.map(task =>
-								task.id === action.taskId
-									? { ...task, isDone: action.isDone }
-									: task
-							)
-						}
+						...todo,
+						tasks: todo.tasks.map(task =>
+							task.id === action.taskId
+								? { ...task, isDone: action.isDone }
+								: task
+						)
+					}
 					: todo
 			);
 		}
@@ -56,13 +73,13 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-							...todo,
-							tasks: todo.tasks.map(task =>
-								task.id === action.taskId
-									? { ...task, title: action.title }
-									: task
-							)
-						}
+						...todo,
+						tasks: todo.tasks.map(task =>
+							task.id === action.taskId
+								? { ...task, title: action.title }
+								: task
+						)
+					}
 					: todo
 			);
 		}
@@ -73,6 +90,13 @@ export const todolistReducer = (
 };
 
 //actionCreators
+
+export const createTodoList = (todoId: string) => {
+	return {
+		type: 'CREATE-TODOLIST',
+		todoId
+	} as const;
+};
 
 export const addTask = (todoId: string, title: string) => {
 	return {
@@ -126,17 +150,19 @@ export type TaskType = {
 export type FilterTasksType = 'All' | 'Completed' | 'Active';
 export type TodolistType = {
 	id: string;
-	title: string;
 	filter: FilterTasksType;
 	tasks: TaskType[];
 };
 
 export type TodolistActionsType =
 	| AddTaskType
+	| CreateTodoList
 	| DeleteTaskType
 	| EditTitleTaskType
 	| ChangeStatusTaskType;
+
 export type AddTaskType = ReturnType<typeof addTask>;
 export type DeleteTaskType = ReturnType<typeof deleteTask>;
+export type CreateTodoList = ReturnType<typeof createTodoList>
 export type EditTitleTaskType = ReturnType<typeof editTitleTask>;
 export type ChangeStatusTaskType = ReturnType<typeof changeStatusTask>;

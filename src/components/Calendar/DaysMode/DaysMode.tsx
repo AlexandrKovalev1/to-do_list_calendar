@@ -5,20 +5,19 @@ import {
 	checkIsToday
 } from '../../../utils/helpers/calendar/date';
 import { DayType } from '../CalendarTypes';
+import { useDispatch } from 'react-redux';
+import { setSelectedDay } from '../../../redux/reducers/appReducer';
+import { useAppSelector } from '../../../redux/store/store';
 
 export const DaysMode: FC<DaysModeProps> = ({
-	calendarDays,
-	selectedDay,
-	monthIndex,
-	setSelectedDay,
-	days
-}) => {
+																							calendarDays,
+																							monthIndex,
+																							days
+																						}) => {
 	return (
 		<>
 			<DaysOfWeekName days={days} />
 			<DaysOfWeek
-				selectedDay={selectedDay}
-				setSelectedDay={setSelectedDay}
 				calendarDays={calendarDays}
 				monthIndex={monthIndex}
 			/>
@@ -37,17 +36,22 @@ export const DaysOfWeekName: FC<DaysOfWeekNameProps> = ({ days }) => {
 };
 
 export const DaysOfWeek: FC<DaysOfWeekProps> = ({
-	calendarDays,
-	selectedDay,
-	monthIndex,
-	setSelectedDay
-}) => {
+																									calendarDays,
+																									monthIndex
+																								}) => {
+
+	const dispatch = useDispatch();
+	const selectedDay = useAppSelector<Date>(state => state.app.selectedDay)
 	return (
 		<div className={classes.days}>
 			{calendarDays.map(day => {
 				const today = checkIsToday(day.date);
 				const isSelectedDay = checkDateIsEqual(day.date, selectedDay);
 				const isAdditionalDay = day.monthIndex !== monthIndex;
+
+				const onClickDayHandler = () => {
+					dispatch(setSelectedDay(day.date));
+				};
 
 				const finalClass =
 					classes.day +
@@ -59,10 +63,7 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 					<div
 						key={day.date.toString()}
 						className={finalClass}
-						onClick={() => {
-							setSelectedDay(day);
-							console.log(day.time);
-						}}
+						onClick={onClickDayHandler}
 					>
 						{day.dayNumber}
 					</div>
@@ -76,9 +77,8 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 
 type DaysOfWeekProps = {
 	calendarDays: DayType[];
-	selectedDay: Date;
+
 	monthIndex: number;
-	setSelectedDay: (day: DayType) => void;
 };
 
 type DaysOfWeekNameProps = {

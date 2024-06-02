@@ -1,22 +1,23 @@
-import classes from './Calendar.module.css';
 import { FC } from 'react';
-import { useCalendar } from '../../hooks/useCalendar';
-import { MonthsMode } from './MonthsMode/MonthsMode';
+import classes from './Calendar.module.css';
 import { DaysMode } from './DaysMode/DaysMode';
-import { CalendarHeader } from './CalendarHeader/CalendarHeader';
 import { YearsMode } from './YearsMode/YearsMode';
+import { MonthsMode } from './MonthsMode/MonthsMode';
+import { useCalendar } from '../../hooks/useCalendar';
+import { useAppSelector } from '../../redux/store/store';
+import { CalendarHeader } from './CalendarHeader/CalendarHeader';
 
 type Props = {
 	locale?: string;
-	selectedDate: Date;
-	selectDate: (date: Date) => void;
 	firstWeekDay?: number;
 };
 export const Calendar: FC<Props> = ({
 	locale = 'default',
-	selectedDate,
 	firstWeekDay = 2
 }) => {
+
+	let selectedDate = useAppSelector<Date>(state=>state.app.selectedDay)
+
 	const { state, functions } = useCalendar({
 		locale,
 		selectedDate,
@@ -39,9 +40,7 @@ export const Calendar: FC<Props> = ({
 					{state.mode === 'days' && (
 						<DaysMode
 							calendarDays={state.calendarDays}
-							selectedDay={state.selectedDay.date}
 							monthIndex={state.selectedMonth.monthIndex}
-							setSelectedDay={functions.setSelectedDay}
 							days={state.weekDaysNames}
 						/>
 					)}
