@@ -5,11 +5,6 @@
     text-align: center;
 }
 
-.disabled {
-    opacity: 0.5;
-    cursor: no-drop;
-}
-
 .arrow {
     position: relative;
     width: 15px;
@@ -31,3 +26,7 @@
     transform: rotate(-135deg);
 }
 
+.disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+}

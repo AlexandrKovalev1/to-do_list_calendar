@@ -13,7 +13,6 @@ export const CalendarHeader: FC<CalendarHeaderPropsType> = ({
 	selectedMonthIndex
 }) => {
 	const currentMonth = monthsNames[selectedMonthIndex].month;
-
 	return (
 		<div className={classes.header}>
 			<Button Xtype={'prev'} onClick={() => onClickArrow('prev')} />

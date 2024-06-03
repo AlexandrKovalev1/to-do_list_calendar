@@ -1,24 +1,31 @@
-import { createDate } from '../../createDate';
+import { createDate } from './createDate';
 
-export const getWeekDaysNames = (
+export const getDaysOfWeek = (
+	setSelectedDay: Date,
 	locale: string = 'default',
-	firstWeekDay: number = 1
+	firstWeekDay: number = 2
 ) => {
 	const weekDaysNames: {
 		day: ReturnType<typeof createDate>['day'];
-		dayShort: ReturnType<typeof createDate>['dayShort'];
+		dayNumber: ReturnType<typeof createDate>['dayNumber'];
 		dayNumberInWeek: ReturnType<typeof createDate>['dayNumberInWeek'];
+		dayId: ReturnType<typeof createDate>['time'];
 	}[] = Array.from({ length: 7 });
 
-	const date = new Date();
+	const date = setSelectedDay;
 
 	weekDaysNames.forEach((_, i) => {
-		const { day, dayNumberInWeek, dayShort } = createDate({
+		const { day, dayNumberInWeek, dayNumber, time } = createDate({
 			locale,
 			date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i)
 		});
 
-		weekDaysNames[dayNumberInWeek - 1] = { dayShort, day, dayNumberInWeek };
+		weekDaysNames[dayNumberInWeek - 1] = {
+			dayNumber,
+			day,
+			dayNumberInWeek,
+			dayId: time
+		};
 	});
 
 	return [

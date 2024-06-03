@@ -1,19 +1,18 @@
 import { FC } from 'react';
 import classes from './Main.module.css';
 import { Calendar } from '../../components/Calendar/Calendar';
-import { TasksFromDay } from '../../components/TodosFromDay/TodosFromDay';
+import { TodolistsBlock } from '../../components/TodolistsBlock/TodolistsBlock';
 
 type Props = {};
 export const Main: FC<Props> = (props: Props) => {
-
 	return (
 		<main className={classes.main}>
-			<div>
-				<Calendar />
+			<div className={classes.container}>
+				<div>
+					<Calendar />
+				</div>
+				<TodolistsBlock />
 			</div>
-		<div>
-			<TasksFromDay/>
-		</div>
 		</main>
 	);
 };

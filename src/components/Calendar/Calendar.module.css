@@ -1,16 +1,12 @@
 .wrapper {
     width: 100%;
-    padding: 10px 20px;
-
-    @media screen and (max-width: 425px) {
-        padding: 10px 0;
-    }
 }
 
 .container {
     width: 100%;
     height: 100%;
-    background-color: #bdbebd;
+    background: rgb(13,230,53);
+    background: linear-gradient(167deg, rgba(13,230,53,1) 0%, rgba(203,218,130,1) 78%, rgba(208,208,208,1) 100%);
     border-radius: 5px;
 }
 
@@ -26,11 +22,10 @@
 
 .body {
     padding: 5px;
-
 }
 
 .today {
-    border: 1px solid black;
+    outline: 2px solid yellow;
 }
 
 .week_names {
@@ -60,12 +55,12 @@
 }
 
 .day:hover {
-    background-color: grey;
+background-color: #fd6200;
     transition: 0.4s;
 }
 
 .selected {
-    background-color: darkgrey;
+    background-color: #89cf00;
     color: white;
 }
 
@@ -83,10 +78,9 @@
 }
 
 .pick_item:hover {
-    background-color: grey;
+    background-color: #fd6200;
     transition: 0.4s;
 }
-
 
 .pick_item_container {
     font-weight: 400;

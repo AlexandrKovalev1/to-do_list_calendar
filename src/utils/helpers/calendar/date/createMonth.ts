@@ -1,4 +1,4 @@
-import { createDate } from './createDate';
+import { createDate } from '../../createDate';
 import { getMonthNumberOfDays } from './getMonthNumberOfDays';
 
 type CreateMonthParams = {

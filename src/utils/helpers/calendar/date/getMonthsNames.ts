@@ -1,4 +1,4 @@
-import { createDate } from './createDate';
+import { createDate } from '../../createDate';
 
 export const getMonthsNames = (locale: string = 'defalut') => {
 	const monthsNames: {

@@ -1,4 +1,4 @@
-import { getWeekNumber } from './getWeekNumber';
+import { getWeekNumber } from './calendar/date/getWeekNumber';
 
 type CreateDateParams = {
 	locale?: string;

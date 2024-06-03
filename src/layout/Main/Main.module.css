@@ -1,6 +1,14 @@
 .main {
+
+}
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px;
     display: grid;
     grid-template-columns: 35% 1fr;
+    gap: 20px;
 
     @media screen and (max-width: 768px){
         grid-template-columns: 1fr;
@@ -8,3 +16,13 @@
     }
 }
 
+.todoLists_wrapper{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+
+    @media screen and (max-width: 768px){
+        grid-template-columns: repeat(1,1fr);
+        gap: 5px;
+    }
+}
