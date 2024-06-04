@@ -1,8 +1,7 @@
-import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../../redux/reducers/todolistReducer';
 import classes from './AddTask.module.css';
-import { Button } from '../../Button/Button';
+import { ChangeEvent, FC, useState } from 'react';
+import { addTask } from '../../../redux/reducers/todolistReducer';
 
 type AddTaskProps = {
 	todoId: string;
@@ -33,6 +32,7 @@ export const AddTask: FC<AddTaskProps> = ({ todoId }) => {
 	const inputClass = error
 		? `${classes.addTask_input} ${classes.error}`
 		: classes.addTask_input;
+
 	return (
 		<div className={classes.addTask}>
 			<input

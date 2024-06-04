@@ -1,12 +1,10 @@
-import { FC } from 'react';
 import classes from './Main.module.css';
-import { TodolistsBlock } from '../../components/TodolistsBlock/TodolistsBlock';
 import { CalendarBlock } from '../../components/CalendarBlock/CalendarBlock';
+import { TodolistsBlock } from '../../components/TodolistsBlock/TodolistsBlock';
 
-type Props = {};
-export const Main: FC<Props> = (props: Props) => {
+export const Main = () => {
 	return (
-		<main className={classes.main}>
+		<main>
 			<div className={classes.container}>
 				<CalendarBlock />
 				<TodolistsBlock />

@@ -1,11 +1,10 @@
 import classes from './TodolistsBlock.module.css';
-import { TodoListsBlockHeader } from './TodoListsBlockHeader/TodoListsBlockHeader';
 import { TasksForDay } from '../TasksForDay/TasksForDay';
-import { TasksForWeek } from '../TasksForWeek/TasksForWeek';
 import { useAppSelector } from '../../redux/store/store';
+import { TasksForWeek } from '../TasksForWeek/TasksForWeek';
+import { TodoListsBlockHeader } from './TodoListsBlockHeader/TodoListsBlockHeader';
 
-type Props = {};
-export const TodolistsBlock = (props: Props) => {
+export const TodolistsBlock = () => {
 	const mode = useAppSelector(state => state.app.taskDisplayMode);
 
 	return (

@@ -1,9 +1,9 @@
-import { AddTask } from '../AddTask/AddTask';
-import { Task } from '../Task/Task';
-import { useAppSelector } from '../../../redux/store/store';
 import { FC } from 'react';
-import { TodolistType } from '../../../redux/reducers/todolistReducer';
+import { Task } from '../Task/Task';
 import classes from '../Todolist.module.css';
+import { AddTask } from '../AddTask/AddTask';
+import { useAppSelector } from '../../../redux/store/store';
+import { TodolistType } from '../../../redux/reducers/todolistReducer';
 
 type TasksBlockProps = {
 	todoId: string;

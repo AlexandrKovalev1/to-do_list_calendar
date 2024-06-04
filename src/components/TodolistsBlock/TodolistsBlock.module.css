@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
-    background: linear-gradient(167deg, rgba(13,230,53,1) 0%, rgba(203,218,130,1) 78%, rgba(208,208,208,1) 100%);
+    background: linear-gradient(318deg, rgba(13, 230, 53, 1) 0%, rgba(203, 218, 130, 1) 78%, rgba(208, 208, 208, 1) 100%);
     border-radius: 5px;
 }
 
@@ -26,7 +26,8 @@
 .menu {
     position: relative;
 }
-.menu>span {
+
+.menu > span {
     position: absolute;
     padding: 0 10px;
     width: 165px;
@@ -44,17 +45,20 @@
 
 .filter_item {
     all: unset;
-    cursor:pointer;
+    cursor: pointer;
     font-weight: bold;
+
     &:hover {
         -webkit-text-stroke: 1px rgba(13, 230, 53, 1);
     }
+
     &:disabled {
-        color:rgba(13, 230, 53, 1) ;
+        color: rgba(13, 230, 53, 1);
         cursor: no-drop;
     }
-    &:disabled:hover{
-        -webkit-text-stroke:unset;
+
+    &:disabled:hover {
+        -webkit-text-stroke: unset;
     }
 
 }

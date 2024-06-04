@@ -15,11 +15,12 @@ type Props = {
 
 export const Todolist: FC<Props> = memo(({ day }) => {
 	const dayId = day.getTime().toString();
-	const title = createTitleOfTaskBlock(day);
 
 	const todoList = useAppSelector<TodolistType | undefined>(state =>
 		state.todolists.find(todos => todos.id === dayId)
 	);
+
+	const title = createTitleOfTaskBlock(day);
 
 	return (
 		<div className={classes.wrapper}>
@@ -33,9 +34,7 @@ export const Todolist: FC<Props> = memo(({ day }) => {
 	);
 });
 
-type TodolistBlockTitlePropsType = {
-	title: string;
-};
+type TodolistBlockTitlePropsType = { title: string };
 
 export const TodolistBlockTitle: FC<TodolistBlockTitlePropsType> = ({
 	title
@@ -47,7 +46,11 @@ export const TodolistBlockTitle: FC<TodolistBlockTitlePropsType> = ({
 	);
 };
 
-export const CreateTodolistBlock = ({ todoId }: { todoId: string }) => {
+type CreteTodolistBlockProps = { todoId: string };
+
+export const CreateTodolistBlock: FC<CreteTodolistBlockProps> = ({
+	todoId
+}) => {
 	const dispatch = useDispatch();
 	return (
 		<div className={classes.createTodolist_wrapper}>

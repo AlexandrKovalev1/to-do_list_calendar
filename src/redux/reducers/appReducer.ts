@@ -1,6 +1,6 @@
 const initialState = {
 	selectedDay: new Date(),
-	taskDisplayMode: 'week' as const,
+	taskDisplayMode: 'day' as const,
 	selectedWeek: [],
 	currentDate: new Date()
 };

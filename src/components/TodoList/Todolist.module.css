@@ -3,7 +3,7 @@
     display: grid;
     grid-template-rows:40px 1fr ;
     border-radius: 5px;
-    background-color: #778899;
+    background: linear-gradient(205deg, rgba(13, 230, 53, 1) 0%, rgba(203, 218, 130, 1) 78%, rgba(208, 208, 208, 1) 100%);
     height: 100%;
 }
 
@@ -21,13 +21,12 @@
 
     & button {
         all: unset;
-        color: #89cf00;
         font-size: 25px;
         cursor: pointer;
         white-space: nowrap;
 
         &:hover {
-            -webkit-text-stroke: 1px red;
+            -webkit-text-stroke: 1px #ff1d15;
         }
     }
 
@@ -39,7 +38,7 @@
     height: 100%;
     padding: 10px 15px;
     display: grid;
-    grid-auto-rows: 50px;
+    grid-auto-rows: 35px;
     gap: 15px;
 }
 
@@ -48,69 +47,6 @@
     gap: 10px
 }
 
-/*Task*/
 
-.task_wrapper {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    font-size: 1.2rem;
-}
 
-.task_button_delete {
-    all: unset;
-    width: 30px;
-    height: 30px;
-    background-image: url("https://img.icons8.com/?size=100&id=exEuV0xMCMYC&format=png&color=000000");
-    background-size: 28px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 
-.task_button_delete:hover {
-    background-size: 30px;
-    transition: 0.1s;
-}
-
-.isDone {
-    opacity: 0.5;
-}
-
-.task_custom_checkbox__checkbox {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-}
-
-.task_custom_checkbox__label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-}
-
-.task_custom_checkbox__label:before {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 1px solid #adb5bd;
-    border-radius: 0.25em;
-    margin-right: 0.5em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50% 50%;
-}
-
-.task_custom_checkbox__checkbox:checked + .task_custom_checkbox__label:before {
-    border-color: #0b76ef;
-    background-color: #0b76ef;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-}

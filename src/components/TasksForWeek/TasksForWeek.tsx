@@ -1,10 +1,8 @@
 import classes from './TasksForWeek.module.css';
-
-import { useAppSelector } from '../../redux/store/store';
 import { Todolist } from '../TodoList/Todolist';
+import { useAppSelector } from '../../redux/store/store';
 
-type Props = {};
-export const TasksForWeek = (props: Props) => {
+export const TasksForWeek = () => {
 	const selectedWeek = useAppSelector(state => state.app.selectedWeek);
 
 	const TasksForWeekWeek = selectedWeek

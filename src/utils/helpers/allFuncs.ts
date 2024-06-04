@@ -19,7 +19,6 @@ export const createTitleOfTaskBlock = (selectedDay: Date) => {
 		.reverse()
 		.join(' ')
 		.slice(0, -1);
-	const title = currentDay === today ? 'Today' : anotherDay;
 
-	return title;
+	return currentDay === today ? `Today` : anotherDay;
 };
