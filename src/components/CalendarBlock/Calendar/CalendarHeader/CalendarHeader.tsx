@@ -1,5 +1,5 @@
 import classes from '../Calendar.module.css';
-import { Button } from '../../Button/Button';
+import { Button } from '../../../Button/Button';
 import { ModeType, MonthsNameType } from '../CalendarTypes';
 import { FC } from 'react';
 

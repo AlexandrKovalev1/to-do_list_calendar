@@ -1,71 +1,51 @@
 /*todolist*/
-
 .wrapper {
+    display: grid;
+    grid-template-rows:40px 1fr ;
+    border-radius: 5px;
+    background-color: #778899;
+    height: 100%;
+}
+
+.todoList_title {
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+/*createTodolist*/
+.createTodolist_wrapper {
+    display: grid;
+    justify-content: center;
+    padding-bottom: 10px;
+
+    & button {
+        all: unset;
+        color: #89cf00;
+        font-size: 25px;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:hover {
+            -webkit-text-stroke: 1px red;
+        }
+    }
+
+}
+
+/*tasks block*/
+.tasks_block_wrapper {
     width: 100%;
     height: 100%;
     padding: 10px 15px;
-    background-color: #778899;
     display: grid;
-    grid-auto-rows: 60px;
+    grid-auto-rows: 50px;
     gap: 15px;
-
 }
 
-/*addTask*/
-.addTask {
-    position: relative;
-    width: 100%;
-
-}
-
-.addTask_messageError {
-    position: absolute;
-    color: red;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-
-}
-
-.addTask_input {
-    all: unset;
-    width: 100%;
-    height: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: default;
-
-    &::placeholder {
-        text-align: center;
-    }
-}
-
-.error {
-    background-color: rgb(225 28 28 / 5%);
-    outline: 1px solid red;
-}
-
-.button {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    height: 20px;
-    width: 60px;
-    font-size: 12px;
-    text-align: center;
-    transform: translateY(-50%);
-    opacity: 0.8;
-
-    &:hover {
-        opacity: 1;
-    }
-}
-
-.button:disabled {
-    opacity: 0.5;
+.week_mode {
+    grid-auto-rows: 30px;
+    gap: 10px
 }
 
 /*Task*/
@@ -79,10 +59,11 @@
     align-items: center;
     justify-content: space-between;
     background-color: white;
+    font-size: 1.2rem;
 }
 
 .task_button_delete {
-    all:unset;
+    all: unset;
     width: 30px;
     height: 30px;
     background-image: url("https://img.icons8.com/?size=100&id=exEuV0xMCMYC&format=png&color=000000");
@@ -91,6 +72,7 @@
     background-repeat: no-repeat;
     cursor: pointer;
 }
+
 .task_button_delete:hover {
     background-size: 30px;
     transition: 0.1s;

@@ -7,7 +7,7 @@ type DefaultButtonPropsType = DetailedHTMLProps<
 >;
 
 type Props = {
-	Xtype: 'default' | 'next' | 'prev' | 'add'|'data';
+	Xtype: 'default' | 'next' | 'prev' | 'add' | 'data';
 	title?: string;
 } & DefaultButtonPropsType;
 export const Button: FC<Props> = ({
@@ -18,13 +18,15 @@ export const Button: FC<Props> = ({
 	Xtype
 }) => {
 	const finalClassName =
+		(className ? className : '') +
+		' ' +
 		classes.button +
 		(disabled ? ' ' + classes.disabled : '') +
-		((Xtype === 'prev' ||Xtype=== 'next') ? ` ${classes.arrow} ${classes[Xtype]}`
+		(Xtype === 'prev' || Xtype === 'next'
+			? ` ${classes.arrow} ${classes[Xtype]}`
 			: Xtype === 'data'
 				? ' ' + classes.data
-				: ' ') +
-		(className ? ' ' + className : ''); // задачка на смешивание классов
+				: ' ');
 	return (
 		<button onClick={onClick} className={finalClassName} disabled={disabled}>
 			{title && title}

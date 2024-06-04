@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../../redux/reducers/todolistReducer';
-import classes from '../Todolist.module.css';
+import classes from './AddTask.module.css';
 import { Button } from '../../Button/Button';
 
 type AddTaskProps = {
@@ -44,13 +44,13 @@ export const AddTask: FC<AddTaskProps> = ({ todoId }) => {
 				placeholder={'create task'}
 			/>
 			{error && <small className={classes.addTask_messageError}>{error}</small>}
-			<Button
-				Xtype={'add'}
-				className={classes.button}
-				title={'add task'}
-				onClick={onClickHandler}
+			<button
+				className={classes.buttonAdd}
 				disabled={!!error}
-			/>
+				onClick={onClickHandler}
+			>
+				add task
+			</button>
 		</div>
 	);
 };

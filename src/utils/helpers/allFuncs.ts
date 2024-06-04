@@ -1,4 +1,4 @@
-export const getTitleOfTaskBlock = (selectedDay: Date) => {
+export const createTitleOfTaskBlock = (selectedDay: Date) => {
 	const currentDay = selectedDay.toLocaleDateString('en-Us', {
 		year: 'numeric',
 		month: 'numeric',

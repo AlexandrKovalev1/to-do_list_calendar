@@ -3,56 +3,57 @@ import {
 	createTodoList,
 	TodolistType
 } from '../../redux/reducers/todolistReducer';
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import classes from './Todolist.module.css';
-import { AddTask } from './AddTask/AddTask';
-import { Task } from './Task/Task';
-import { getTitleOfTaskBlock } from '../../utils/helpers/allFuncs';
+import { TasksBlock } from './TasksBlock/TasksBlock';
+import { createTitleOfTaskBlock } from '../../utils/helpers/allFuncs';
 
-type Props = {};
-export const Todolist = memo((props: Props) => {
-	const selectedDayId = useAppSelector<string>(state =>
-		state.app.selectedDay.getTime().toString()
-	);
+type Props = {
+	day: Date;
+};
+
+export const Todolist: FC<Props> = memo(({ day }) => {
+	const dayId = day.getTime().toString();
+	const title = createTitleOfTaskBlock(day);
+
 	const todoList = useAppSelector<TodolistType | undefined>(state =>
-		state.todolists.find(todos => todos.id === selectedDayId)
+		state.todolists.find(todos => todos.id === dayId)
 	);
-
-	const dispatch = useDispatch();
 
 	return (
 		<div className={classes.wrapper}>
-			<TodolistBlockTitle />
-			<AddTask todoId={selectedDayId} />
+			<TodolistBlockTitle title={title} />
 			{todoList ? (
-				todoList.tasks.map(task => (
-					<Task
-						title={task.title}
-						isDone={task.isDone}
-						id={task.id}
-						key={task.id}
-						todolistId={selectedDayId}
-					/>
-				))
+				<TasksBlock todoId={dayId} todoList={todoList} />
 			) : (
-				<div>
-					<button onClick={() => dispatch(createTodoList(selectedDayId))}>
-						создать задачи
-					</button>
-				</div>
+				<CreateTodolistBlock todoId={dayId} />
 			)}
 		</div>
 	);
 });
 
-export const TodolistBlockTitle = (props: {}) => {
-	const selectedDay = useAppSelector(state => state.app.selectedDay);
+type TodolistBlockTitlePropsType = {
+	title: string;
+};
 
-	const title = getTitleOfTaskBlock(selectedDay);
+export const TodolistBlockTitle: FC<TodolistBlockTitlePropsType> = ({
+	title
+}) => {
 	return (
 		<div>
-			<h3>{title}</h3>
+			<h3 className={classes.todoList_title}>{title}</h3>
+		</div>
+	);
+};
+
+export const CreateTodolistBlock = ({ todoId }: { todoId: string }) => {
+	const dispatch = useDispatch();
+	return (
+		<div className={classes.createTodolist_wrapper}>
+			<button onClick={() => dispatch(createTodoList(todoId))}>
+				Create todolist
+			</button>
 		</div>
 	);
 };

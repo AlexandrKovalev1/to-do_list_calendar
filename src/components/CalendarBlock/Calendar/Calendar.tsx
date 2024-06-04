@@ -3,8 +3,8 @@ import classes from './Calendar.module.css';
 import { DaysMode } from './DaysMode/DaysMode';
 import { YearsMode } from './YearsMode/YearsMode';
 import { MonthsMode } from './MonthsMode/MonthsMode';
-import { useCalendar } from '../../hooks/useCalendar';
-import { useAppSelector } from '../../redux/store/store';
+import { useCalendar } from '../../../hooks/useCalendar';
+import { useAppSelector } from '../../../redux/store/store';
 import { CalendarHeader } from './CalendarHeader/CalendarHeader';
 
 type Props = {
@@ -15,7 +15,7 @@ export const Calendar: FC<Props> = ({
 	locale = 'default',
 	firstWeekDay = 2
 }) => {
-	let selectedDate = useAppSelector<Date>(state => state.app.selectedDay);
+	const selectedDate = useAppSelector(state => state.app.selectedDay);
 
 	const { state, functions } = useCalendar({
 		locale,

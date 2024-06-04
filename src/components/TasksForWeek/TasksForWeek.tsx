@@ -1,19 +1,17 @@
-// @flow
-import * as React from 'react';
-import classes from '../TasksForDay/TasksFoDay.module.css';
+import classes from './TasksForWeek.module.css';
+
+import { useAppSelector } from '../../redux/store/store';
 import { Todolist } from '../TodoList/Todolist';
 
 type Props = {};
 export const TasksForWeek = (props: Props) => {
-	return (
-		<div className={classes.wrapper}>
-			<Todolist />
-			<Todolist />
-			<Todolist />
-			<Todolist />
-			<Todolist />
-			<Todolist />
-			<Todolist />
-		</div>
-	);
+	const selectedWeek = useAppSelector(state => state.app.selectedWeek);
+
+	const TasksForWeekWeek = selectedWeek
+		? selectedWeek.map(day => (
+				<Todolist day={day.date} key={day.date.getTime()} />
+			))
+		: [];
+
+	return <div className={classes.wrapper}>{TasksForWeekWeek}</div>;
 };

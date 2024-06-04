@@ -1,13 +1,21 @@
 const initialState = {
 	selectedDay: new Date(),
-	taskDisplayMode: 'today'
-} as const;
+	taskDisplayMode: 'week' as const,
+	selectedWeek: [],
+	currentDate: new Date()
+};
 
 export const appReducer = (
 	state: InitStateType = initialState,
 	action: ActionAppTypes
 ) => {
 	switch (action.type) {
+		case 'SET-WEEK-DAYS': {
+			return {
+				...state,
+				selectedWeek: action.days
+			};
+		}
 		case 'SET-SELECTED-DAY': {
 			return { ...state, selectedDay: action.day };
 		}
@@ -27,18 +35,34 @@ export const setSelectedDay = (day: Date) => {
 	} as const;
 };
 
-export const toggleDisplayTaskMode = (mode: 'today' | 'week') => {
+export const toggleDisplayTaskMode = (mode: TaskDisplayModeType) => {
 	return {
 		type: 'TOGGLE-DISPLAY-TASK-MODE',
 		mode
 	} as const;
 };
 
+export const setWeekDays = (days: { date: Date }[]) => {
+	return {
+		type: 'SET-WEEK-DAYS',
+		days
+	} as const;
+};
+
 //types
-type ActionAppTypes = SetSelectedDayType | ToggleDisplayTaskModeType;
+type ActionAppTypes =
+	| SetSelectedDayType
+	| ToggleDisplayTaskModeType
+	| SetWeekDaysType;
+
+type TaskDisplayModeType = 'day' | 'week';
+
 type InitStateType = {
 	selectedDay: Date;
-	taskDisplayMode: 'today' | 'week';
+	taskDisplayMode: TaskDisplayModeType;
+	selectedWeek: { date: Date }[];
+	currentDate: Date;
 };
 type SetSelectedDayType = ReturnType<typeof setSelectedDay>;
 type ToggleDisplayTaskModeType = ReturnType<typeof toggleDisplayTaskMode>;
+type SetWeekDaysType = ReturnType<typeof setWeekDays>;
