@@ -35,7 +35,7 @@ export const Task: FC<TaskPropsType> = memo(
 					type='checkbox'
 					checked={isDone}
 					onChange={onChangeHandler}
-					className={classes.task_checkbox__checkbox}
+					className={classes.task_custom_checkbox}
 					id={id}
 				/>
 				<label

@@ -24,6 +24,7 @@
     display: inline-flex;
     align-items: center;
     user-select: none;
+    cursor: pointer;
 }
 
 .task_custom_checkbox__label:before {
