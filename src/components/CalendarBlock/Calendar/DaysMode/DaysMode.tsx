@@ -42,14 +42,14 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 }) => {
 	const dispatch = useDispatch();
 
-	const selectedDay = useAppSelector(state => state.app.selectedDay);
+	const selectedDay = new Date(useAppSelector(state => state.app.selectedDay));
 	const mode = useAppSelector(state => state.app.taskDisplayMode);
 	const currentWeekdays = useAppSelector(state => state.app.selectedWeek);
 
 	useEffect(() => {
 		mode === 'week' &&
 			!currentWeekdays.find(
-				day => day.date.getTime() === selectedDay.getTime()
+				day => new Date(day.date).getTime() === selectedDay.getTime()
 			) &&
 			dispatch(setWeekDays(getDaysOfWeek(selectedDay)));
 	}, [selectedDay, mode]);
