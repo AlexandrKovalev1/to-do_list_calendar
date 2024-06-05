@@ -41,4 +41,6 @@ context API и т.д.).
 
 ## По выполнению
 
-Сделал Ui Добавил немного UX  в тасках . Cохранение в Locale storage. Календарь не мой но использую его функции
+Сделал Ui Добавил немного UX  в тасках . Cохранение в Locale storage. Календарь не мой - но использую его функции.
+
+Деплой https://alexandrkovalev1.github.io/to-do_list_calendar/
