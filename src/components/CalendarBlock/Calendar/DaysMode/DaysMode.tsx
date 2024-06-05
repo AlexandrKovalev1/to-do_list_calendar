@@ -54,7 +54,7 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 	useEffect(() => {
 		mode === 'week' &&
 			!currentWeekdays.find(
-				day => day.date.getTime() === selectedDay.getTime()
+				day => new Date(day.date).getTime() === selectedDay.getTime()
 			) &&
 			dispatch(setWeekDays(getDaysOfWeek(selectedDay)));
 	}, [selectedDay, mode, dispatch, currentWeekdays]);

@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-
 const initialState: TodolistType[] = [
 	{
 		id: '1717275600000',
@@ -8,7 +7,8 @@ const initialState: TodolistType[] = [
 		tasks: [
 			{ title: 'first', id: uuidv4(), isDone: false },
 			{ title: 'second', id: uuidv4(), isDone: false },
-			{ title: 'third', id: uuidv4(), isDone: true }
+			{ title: 'third', id: uuidv4(), isDone: true },
+			{ title: 'fourth', id: uuidv4(), isDone: true }
 		]
 	},
 	{
@@ -49,9 +49,9 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-						...todo,
-						tasks: todo.tasks.filter(task => task.id !== action.idTask)
-					}
+							...todo,
+							tasks: todo.tasks.filter(task => task.id !== action.idTask)
+						}
 					: todo
 			);
 		}
@@ -59,13 +59,13 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-						...todo,
-						tasks: todo.tasks.map(task =>
-							task.id === action.taskId
-								? { ...task, isDone: action.isDone }
-								: task
-						)
-					}
+							...todo,
+							tasks: todo.tasks.map(task =>
+								task.id === action.taskId
+									? { ...task, isDone: action.isDone }
+									: task
+							)
+						}
 					: todo
 			);
 		}
@@ -73,13 +73,13 @@ export const todolistReducer = (
 			return state.map(todo =>
 				todo.id === action.todoId
 					? {
-						...todo,
-						tasks: todo.tasks.map(task =>
-							task.id === action.taskId
-								? { ...task, title: action.title }
-								: task
-						)
-					}
+							...todo,
+							tasks: todo.tasks.map(task =>
+								task.id === action.taskId
+									? { ...task, title: action.title }
+									: task
+							)
+						}
 					: todo
 			);
 		}
@@ -163,6 +163,6 @@ export type TodolistActionsType =
 
 export type AddTaskType = ReturnType<typeof addTask>;
 export type DeleteTaskType = ReturnType<typeof deleteTask>;
-export type CreateTodoList = ReturnType<typeof createTodoList>
+export type CreateTodoList = ReturnType<typeof createTodoList>;
 export type EditTitleTaskType = ReturnType<typeof editTitleTask>;
 export type ChangeStatusTaskType = ReturnType<typeof changeStatusTask>;
