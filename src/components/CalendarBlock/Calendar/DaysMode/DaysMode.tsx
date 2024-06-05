@@ -1,5 +1,5 @@
 import classes from '../Calendar.module.css';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import {
 	checkDateIsEqual,
 	checkIsToday
@@ -42,9 +42,14 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 }) => {
 	const dispatch = useDispatch();
 
-	const selectedDay = useAppSelector(state => state.app.selectedDay);
+	const selectedDayInState = useAppSelector(state => state.app.selectedDay);
 	const mode = useAppSelector(state => state.app.taskDisplayMode);
 	const currentWeekdays = useAppSelector(state => state.app.selectedWeek);
+
+	const selectedDay = useMemo(
+		() => new Date(selectedDayInState),
+		[selectedDayInState]
+	);
 
 	useEffect(() => {
 		mode === 'week' &&
@@ -52,7 +57,7 @@ export const DaysOfWeek: FC<DaysOfWeekProps> = ({
 				day => day.date.getTime() === selectedDay.getTime()
 			) &&
 			dispatch(setWeekDays(getDaysOfWeek(selectedDay)));
-	}, [selectedDay, mode]);
+	}, [selectedDay, mode, dispatch, currentWeekdays]);
 	return (
 		<div className={classes.days}>
 			{calendarDays.map(day => {
