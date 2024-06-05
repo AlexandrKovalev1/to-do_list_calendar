@@ -15,7 +15,7 @@ export const Calendar: FC<Props> = ({
 	locale = 'default',
 	firstWeekDay = 2
 }) => {
-	const selectedDate = useAppSelector(state => state.app.selectedDay);
+	const selectedDate = new Date(useAppSelector(state => state.app.selectedDay));
 
 	const { state, functions } = useCalendar({
 		locale,

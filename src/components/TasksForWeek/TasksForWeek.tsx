@@ -7,7 +7,7 @@ export const TasksForWeek = () => {
 
 	const TasksForWeekWeek = selectedWeek
 		? selectedWeek.map(day => (
-				<Todolist day={day.date} key={day.date.getTime()} />
+				<Todolist day={new Date(day.date)} key={new Date(day.date).getTime()} />
 			))
 		: [];
 
